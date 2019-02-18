@@ -1,16 +1,11 @@
 package com.example.chat_mvp_practice.presenter;
 
-import android.provider.MediaStore;
-import android.util.Log;
-
-import com.example.chat_mvp_practice.Model.Message;
+import com.example.chat_mvp_practice.model.Message;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivityPresenter {
-
-    private static final String TAG = "debugging";
 
     private List<Message> messageList;
 
@@ -35,7 +30,7 @@ public class MainActivityPresenter {
         messageList.add(message);
     }
 
-    public void refreshRepositoriesList(MessagesRecyclerViewAdater adapter){
+    public void refreshRepositoriesList(MessagesRecyclerViewAdapter adapter){
         adapter.notifyDataSetChanged();
     }
 

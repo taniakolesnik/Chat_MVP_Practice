@@ -4,15 +4,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
-import com.example.chat_mvp_practice.Model.Message;
 import com.example.chat_mvp_practice.presenter.MainActivityPresenter;
-import com.example.chat_mvp_practice.presenter.MessagesRecyclerViewAdater;
+import com.example.chat_mvp_practice.presenter.MessagesRecyclerViewAdapter;
+
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -32,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     Button button;
 
     private MainActivityPresenter presenter;
-    private MessagesRecyclerViewAdater adapter;
+    private MessagesRecyclerViewAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,13 +48,22 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String text = editText.getText().toString();
-                presenter.addMessage(text, String.valueOf(System.currentTimeMillis()));
-                presenter.refreshRepositoriesList(adapter);
+                if (text.isEmpty()){
+                    editText.setError(getString(R.string.edit_text_error));
+                } else {
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MMM-yyyy HH:MM:SS", Locale.UK);
+                    LocalDateTime now = LocalDateTime.now();
+                    String time = formatter.format(now);
+
+                    presenter.addMessage(text, time);
+                    presenter.refreshRepositoriesList(adapter);
+                    editText.getText().clear();
+                }
 
             }
         });
 
-        adapter = new MessagesRecyclerViewAdater(presenter);
+        adapter = new MessagesRecyclerViewAdapter(presenter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
 

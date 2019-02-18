@@ -1,6 +1,7 @@
-package com.example.chat_mvp_practice.Model;
+package com.example.chat_mvp_practice.model;
 
 public class Message {
+
 
     private String text;
     private String time;

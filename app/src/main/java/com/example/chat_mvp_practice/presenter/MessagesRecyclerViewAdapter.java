@@ -8,11 +8,11 @@ import android.view.ViewGroup;
 
 import com.example.chat_mvp_practice.R;
 
-public class MessagesRecyclerViewAdater extends RecyclerView.Adapter<MessageViewHolder>{
+public class MessagesRecyclerViewAdapter extends RecyclerView.Adapter<MessageViewHolder>{
 
     private MainActivityPresenter presenter;
 
-    public MessagesRecyclerViewAdater(MainActivityPresenter presenter) {
+    public MessagesRecyclerViewAdapter(MainActivityPresenter presenter) {
         this.presenter = presenter;
     }
 
