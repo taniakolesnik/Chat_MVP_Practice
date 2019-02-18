@@ -5,13 +5,6 @@ public class Message {
     private String text;
     private String time;
 
-    //TODO why we should use default constructor?
-
-    public Message(String text, String time) {
-        this.text = text;
-        this.time = time;
-    }
-
     public Message() {
     }
 
