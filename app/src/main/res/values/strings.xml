@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Chat_MVP_Practice</string>
+    <string name="message_hint">Type your message here</string>
+    <string name="button_text">Send</string>
+</resources>
